@@ -33,7 +33,7 @@ class TabBarViewController: UITabBarController {
      
 
         
-        viewControllers = [feedNavController, loginNavController]
+        viewControllers = [loginNavController, feedNavController]
         
     }
 

@@ -109,95 +109,83 @@ class LoginViewController: UIViewController {
         guard let enteredLogin = loginTextField.text else {return}
         guard let enteredPassword = passwordTextField.text else {return}
         
-//        
-//        if enteredLogin.isEmpty && enteredPassword.isEmpty{
-//            
-//            UIView.animate(withDuration: 1,
-//                           delay: 0,
-//                           options: .curveEaseOut)
-//            {
-//                self.loginTextField.layer.borderColor = UIColor.red.cgColor
-//                self.loginTextField.layer.borderWidth = 3
-//                self.loginTextField.layer.cornerRadius = 10
-//                self.passwordTextField.layer.borderColor = UIColor.red.cgColor
-//                self.passwordTextField.layer.borderWidth = 3
-//                self.passwordTextField.layer.cornerRadius = 10
-//             }
-//            completion: { _ in
-//                UIView.animate(withDuration: 0.1,
-//                           delay: 0,
-//                           options: .curveEaseInOut)
-//                    {
-//                        self.loginTextField.layer.borderColor = UIColor.lightGray.cgColor
-//                        self.loginTextField.layer.borderWidth = 0.5
-//                        self.loginTextField.layer.cornerRadius = 0
-//                        self.passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
-//                        self.passwordTextField.layer.borderWidth = 0.5
-//                        self.passwordTextField.layer.cornerRadius = 0
-//                    }
-//            }
-//            return
-//        }
-//                
-//        if enteredLogin.isEmpty  {
-//            UIView.animate(withDuration: 1,
-//                           delay: 0,
-//                           options: .curveEaseOut)
-//            {
-//                self.loginTextField.layer.borderColor = UIColor.red.cgColor
-//                self.loginTextField.layer.borderWidth = 3
-//                self.loginTextField.layer.cornerRadius = 10
-//             }
-//            completion: { _ in
-//                UIView.animate(withDuration: 0.1,
-//                           delay: 0,
-//                           options: .curveEaseInOut)
-//                    {
-//                        self.loginTextField.layer.borderColor = UIColor.lightGray.cgColor
-//                        self.loginTextField.layer.borderWidth = 0.5
-//                        self.loginTextField.layer.cornerRadius = 0
-//                    }
-//            }
-//            return
-//        }
-//        
-//        if enteredPassword.isEmpty {
-//            
-//            UIView.animate(withDuration: 1,
-//                           delay: 0,
-//                           options: .curveEaseOut)
-//            {
-//                self.passwordTextField.layer.borderColor = UIColor.red.cgColor
-//                self.passwordTextField.layer.borderWidth = 3
-//                self.passwordTextField.layer.cornerRadius = 10
-//             }
-//            completion: { _ in
-//                UIView.animate(withDuration: 0.1,
-//                           delay: 0,
-//                           options: .curveEaseInOut)
-//                    {
-//                     
-//                        self.passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
-//                        self.passwordTextField.layer.borderWidth = 0.5
-//                        self.passwordTextField.layer.cornerRadius = 0
-//                    }
-//            }
-//            return
-//        }
-//        
-//        if enteredPassword.count < 8 {
-//            passwordLabel.alpha = 1
-//            return
-//        }else{
-//            passwordLabel.alpha = 0
-//        }
-//        
-//        if enteredPassword != standartPassword || enteredLogin != standartLogin {
-//            let alert = UIAlertController(title: "Предупреждениe", message: "введен не верный логин/пароль", preferredStyle: .alert)
-//            let action = UIAlertAction(title: "ok", style: .destructive)
-//            alert.addAction(action)
-//            present(alert, animated: true)
-//        }
+        
+        if enteredLogin.isEmpty && enteredPassword.isEmpty{
+            
+            UIView.animate(withDuration: 1)
+            {
+                self.loginTextField.layer.borderColor = UIColor.red.cgColor
+                self.loginTextField.layer.borderWidth = 3
+                self.loginTextField.layer.cornerRadius = 10
+                self.passwordTextField.layer.borderColor = UIColor.red.cgColor
+                self.passwordTextField.layer.borderWidth = 3
+                self.passwordTextField.layer.cornerRadius = 10
+             }
+            completion: { _ in
+                UIView.animate(withDuration: 0.1)
+                    {
+                        self.loginTextField.layer.borderColor = UIColor.lightGray.cgColor
+                        self.loginTextField.layer.borderWidth = 0.5
+                        self.loginTextField.layer.cornerRadius = 0
+                        self.passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
+                        self.passwordTextField.layer.borderWidth = 0.5
+                        self.passwordTextField.layer.cornerRadius = 0
+                    }
+            }
+            return
+        }
+                
+        if enteredLogin.isEmpty  {
+            UIView.animate(withDuration: 1)
+            {
+                self.loginTextField.layer.borderColor = UIColor.red.cgColor
+                self.loginTextField.layer.borderWidth = 3
+                self.loginTextField.layer.cornerRadius = 10
+             }
+            completion: { _ in
+                UIView.animate(withDuration: 0.1)
+                    {
+                        self.loginTextField.layer.borderColor = UIColor.lightGray.cgColor
+                        self.loginTextField.layer.borderWidth = 0.5
+                        self.loginTextField.layer.cornerRadius = 0
+                    }
+            }
+            return
+        }
+        
+        if enteredPassword.isEmpty {
+            
+            UIView.animate(withDuration: 1)
+            {
+                self.passwordTextField.layer.borderColor = UIColor.red.cgColor
+                self.passwordTextField.layer.borderWidth = 3
+                self.passwordTextField.layer.cornerRadius = 10
+             }
+            completion: { _ in
+                UIView.animate(withDuration: 0.1)
+                    {
+                     
+                        self.passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
+                        self.passwordTextField.layer.borderWidth = 0.5
+                        self.passwordTextField.layer.cornerRadius = 0
+                    }
+            }
+            return
+        }
+        
+        if enteredPassword.count < 8 {
+            passwordLabel.alpha = 1
+            return
+        }else{
+            passwordLabel.alpha = 0
+        }
+        
+        if enteredPassword != standartPassword || enteredLogin != standartLogin {
+            let alert = UIAlertController(title: "Предупреждениe", message: "введен не верный логин/пароль", preferredStyle: .alert)
+            let action = UIAlertAction(title: "ok", style: .destructive)
+            alert.addAction(action)
+            present(alert, animated: true)
+        }
        
         let profileVC = ProfileViewController ()
         navigationController?.pushViewController(profileVC, animated: true)

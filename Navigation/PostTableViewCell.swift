@@ -9,8 +9,7 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
 
-    var likesAmount = 0
-    var viewsAmount = 0
+    var index: IndexPath?
     weak var delegate: LikesCountDelegate?
     
     private let authorLabel: UILabel = {
@@ -80,18 +79,8 @@ class PostTableViewCell: UITableViewCell {
     
     
     @objc private func tapAction (){
-      print("fgf")
-        delegate?.likesCount()
-//        self.likesLabel.textColor = .red
-//        UIView.animate(withDuration: 2,
-//                       delay: 10,
-//                       options: .beginFromCurrentState)
-//        {
-//            self.likesLabel.textColor = .black
-//         }
-      
-        
-    
+       
+        delegate?.likesCount(indexPath: index!)
     }
     
     func setupCell (post: Post){

@@ -9,6 +9,10 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
 
+    var likesAmount = 0
+    var viewsAmount = 0
+    weak var delegate: LikesCountDelegate?
+    
     private let authorLabel: UILabel = {
         let authorLabel = UILabel()
         authorLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
@@ -32,7 +36,7 @@ class PostTableViewCell: UITableViewCell {
         let descriptionLabel = UILabel()
         descriptionLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         descriptionLabel.textColor = .systemGray
-        descriptionLabel.numberOfLines = 0
+        descriptionLabel.numberOfLines = 2
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         
         return descriptionLabel
@@ -43,6 +47,7 @@ class PostTableViewCell: UITableViewCell {
         likesLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         likesLabel.textColor = .black
         likesLabel.translatesAutoresizingMaskIntoConstraints = false
+        likesLabel.isUserInteractionEnabled = true
         
         return likesLabel
     }()
@@ -59,10 +64,34 @@ class PostTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         makeElements()
+        setupGestures()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
+    func setupGestures() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        likesLabel.addGestureRecognizer(tapGesture)
+    }
+    
+    
+    @objc private func tapAction (){
+      print("fgf")
+        delegate?.likesCount()
+//        self.likesLabel.textColor = .red
+//        UIView.animate(withDuration: 2,
+//                       delay: 10,
+//                       options: .beginFromCurrentState)
+//        {
+//            self.likesLabel.textColor = .black
+//         }
+      
+        
+    
     }
     
     func setupCell (post: Post){

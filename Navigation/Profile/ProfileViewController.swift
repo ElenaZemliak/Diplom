@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
-    
+class ProfileViewController: UIViewController, LikesCountDelegate {
+    var like = 0
     lazy var photoStack: PhotosStack = {
         var photoStack = PhotosStack(firstImage: UIImage(), secondImage: UIImage(), thirdImage: UIImage(), fourthImage: UIImage())
         
@@ -66,6 +66,10 @@ class ProfileViewController: UIViewController {
 
     }
    
+    func likesCount() {
+//        like += 1
+        self.tableView.reloadData()
+    }
     
     func makeElements() {
         view.addSubview(tableView)
@@ -99,7 +103,9 @@ extension ProfileViewController: UITableViewDataSource {
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
             cell.setupCell(post: postStorage[indexPath.section][indexPath.row] as! Post)
-          
+            
+            
+       
             return cell
         }
     }
@@ -107,11 +113,31 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView( _ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             let photosVC = PhotosViewController()
-               
-        self.navigationController?.pushViewController(photosVC, animated: true)
+            
             photosVC.navigationItem.title = "Photo Gallery"
+        }else{
+
+        let post = postStorage[indexPath.section][indexPath.row] as! Post
+        
+        let detailPostVC = DetailPostViewController()
+        
+//            self.navigationController?.pushViewController(detailPostVC, animated: true)
+        present(detailPostVC, animated: true)
+        detailPostVC.authorLabel.text = post.author
+        detailPostVC.likesLabel.text = "Likes: \(post.likes)"
+        detailPostVC.viewsLabel.text = "Views: \(post.views)"
+        detailPostVC.fotoImageView.image = UIImage(named: post.image)!
+        detailPostVC.descriptionLabel.text = post.description
+            post.views += 1
+            tableView.reloadData()
         }
-    }
+        
+       
+        //        let cell = tableView.cellForRow(at: indexPath) as! PostTableViewCell
+//            cell.delegate = self
+        
+   
+}
 }
     
 extension ProfileViewController: UITableViewDelegate {
@@ -138,4 +164,8 @@ extension ProfileViewController: UITableViewDelegate {
             return 0
         }
     }
+}
+
+protocol LikesCountDelegate: AnyObject {
+    func likesCount()
 }

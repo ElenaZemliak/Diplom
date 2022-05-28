@@ -18,6 +18,7 @@
 		836572E82838EB0300C475CD /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836572E72838EB0300C475CD /* ColorSet.swift */; };
 		836572EA2838EE3100C475CD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836572E92838EE3100C475CD /* LoginViewController.swift */; };
 		836572EC2839545400C475CD /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836572EB2839545400C475CD /* ExtensionUIView.swift */; };
+		83BE0AE628414D04005160BF /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BE0AE528414D04005160BF /* DetailPostViewController.swift */; };
 		83E3FB8C282FB3C600BE74AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E3FB8B282FB3C600BE74AD /* AppDelegate.swift */; };
 		83E3FB8E282FB3C600BE74AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E3FB8D282FB3C600BE74AD /* SceneDelegate.swift */; };
 		83E3FB95282FB3C700BE74AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83E3FB94282FB3C700BE74AD /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		836572E72838EB0300C475CD /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
 		836572E92838EE3100C475CD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		836572EB2839545400C475CD /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
+		83BE0AE528414D04005160BF /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
 		83E3FB88282FB3C600BE74AD /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83E3FB8B282FB3C600BE74AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83E3FB8D282FB3C600BE74AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				83107E41283CFB3200F906D5 /* PhotosViewController.swift */,
 				83107E43283D002E00F906D5 /* PhotosCollectionViewCell.swift */,
 				83107E3F283CB46200F906D5 /* Data.swift */,
+				83BE0AE528414D04005160BF /* DetailPostViewController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				83E3FBAA283035D600BE74AD /* Post.swift in Sources */,
 				83E3FBAC28303D2900BE74AD /* InfoViewController.swift in Sources */,
 				83107E1A283A5AD600F906D5 /* PostTableViewCell.swift in Sources */,
+				83BE0AE628414D04005160BF /* DetailPostViewController.swift in Sources */,
 				83107E42283CFB3200F906D5 /* PhotosViewController.swift in Sources */,
 				835C3815283561EE0024B6C8 /* ExtensionUIViewController.swift in Sources */,
 				836572E82838EB0300C475CD /* ColorSet.swift in Sources */,

@@ -24,6 +24,17 @@ class LoginViewController: UIViewController {
         return loginScreen
     }()
     
+    lazy var passwordLabel: UILabel = {
+        let passwordLabel = UILabel()
+        passwordLabel.textColor = .gray
+        passwordLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        passwordLabel.textAlignment = .left
+        passwordLabel.text = "Слишком короткий пароль"
+        passwordLabel.translatesAutoresizingMaskIntoConstraints = false
+        passwordLabel.alpha = 0
+        return passwordLabel
+    }()
+    
     lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView()
         logoImageView.image = UIImage(named: "logo")
@@ -67,6 +78,8 @@ class LoginViewController: UIViewController {
         passwordTextField.placeholder = " Password"
         passwordTextField.backgroundColor = .systemGray6
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.layer.borderWidth = 0.5
+        passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
         passwordTextField.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: passwordTextField.frame.height))
         passwordTextField.leftViewMode = .always
         passwordTextField.delegate = self
@@ -90,6 +103,102 @@ class LoginViewController: UIViewController {
     }()
     
     @objc private func tapAction() {
+        
+        let standartLogin = "Login"
+        let standartPassword = "Password"
+        guard let enteredLogin = loginTextField.text else {return}
+        guard let enteredPassword = passwordTextField.text else {return}
+        
+//        
+//        if enteredLogin.isEmpty && enteredPassword.isEmpty{
+//            
+//            UIView.animate(withDuration: 1,
+//                           delay: 0,
+//                           options: .curveEaseOut)
+//            {
+//                self.loginTextField.layer.borderColor = UIColor.red.cgColor
+//                self.loginTextField.layer.borderWidth = 3
+//                self.loginTextField.layer.cornerRadius = 10
+//                self.passwordTextField.layer.borderColor = UIColor.red.cgColor
+//                self.passwordTextField.layer.borderWidth = 3
+//                self.passwordTextField.layer.cornerRadius = 10
+//             }
+//            completion: { _ in
+//                UIView.animate(withDuration: 0.1,
+//                           delay: 0,
+//                           options: .curveEaseInOut)
+//                    {
+//                        self.loginTextField.layer.borderColor = UIColor.lightGray.cgColor
+//                        self.loginTextField.layer.borderWidth = 0.5
+//                        self.loginTextField.layer.cornerRadius = 0
+//                        self.passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
+//                        self.passwordTextField.layer.borderWidth = 0.5
+//                        self.passwordTextField.layer.cornerRadius = 0
+//                    }
+//            }
+//            return
+//        }
+//                
+//        if enteredLogin.isEmpty  {
+//            UIView.animate(withDuration: 1,
+//                           delay: 0,
+//                           options: .curveEaseOut)
+//            {
+//                self.loginTextField.layer.borderColor = UIColor.red.cgColor
+//                self.loginTextField.layer.borderWidth = 3
+//                self.loginTextField.layer.cornerRadius = 10
+//             }
+//            completion: { _ in
+//                UIView.animate(withDuration: 0.1,
+//                           delay: 0,
+//                           options: .curveEaseInOut)
+//                    {
+//                        self.loginTextField.layer.borderColor = UIColor.lightGray.cgColor
+//                        self.loginTextField.layer.borderWidth = 0.5
+//                        self.loginTextField.layer.cornerRadius = 0
+//                    }
+//            }
+//            return
+//        }
+//        
+//        if enteredPassword.isEmpty {
+//            
+//            UIView.animate(withDuration: 1,
+//                           delay: 0,
+//                           options: .curveEaseOut)
+//            {
+//                self.passwordTextField.layer.borderColor = UIColor.red.cgColor
+//                self.passwordTextField.layer.borderWidth = 3
+//                self.passwordTextField.layer.cornerRadius = 10
+//             }
+//            completion: { _ in
+//                UIView.animate(withDuration: 0.1,
+//                           delay: 0,
+//                           options: .curveEaseInOut)
+//                    {
+//                     
+//                        self.passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
+//                        self.passwordTextField.layer.borderWidth = 0.5
+//                        self.passwordTextField.layer.cornerRadius = 0
+//                    }
+//            }
+//            return
+//        }
+//        
+//        if enteredPassword.count < 8 {
+//            passwordLabel.alpha = 1
+//            return
+//        }else{
+//            passwordLabel.alpha = 0
+//        }
+//        
+//        if enteredPassword != standartPassword || enteredLogin != standartLogin {
+//            let alert = UIAlertController(title: "Предупреждениe", message: "введен не верный логин/пароль", preferredStyle: .alert)
+//            let action = UIAlertAction(title: "ok", style: .destructive)
+//            alert.addAction(action)
+//            present(alert, animated: true)
+//        }
+       
         let profileVC = ProfileViewController ()
         navigationController?.pushViewController(profileVC, animated: true)
         profileVC.navigationItem.title = "Profile"
@@ -131,7 +240,7 @@ class LoginViewController: UIViewController {
         
         view.addSubview(scrollView)
         scrollView.addSubview(loginScreen)
-        [logoImageView, loginPasswordStackView, loginButton].forEach({loginScreen.addSubview($0)})
+        [logoImageView, loginPasswordStackView, loginButton, passwordLabel].forEach({loginScreen.addSubview($0)})
         [loginTextField, passwordTextField].forEach({loginPasswordStackView.addArrangedSubview($0)})
     }
     
@@ -164,7 +273,10 @@ class LoginViewController: UIViewController {
                 loginButton.leadingAnchor.constraint(equalTo: loginScreen.leadingAnchor, constant: 16),
                 loginButton.trailingAnchor.constraint(equalTo: loginScreen.trailingAnchor, constant: -16),
                 loginButton.heightAnchor.constraint(equalToConstant: 50),
-                loginButton.bottomAnchor.constraint(equalTo: loginScreen.bottomAnchor, constant: -(UIScreen.main.bounds.height - 506 - topbarHeight - tabbarHeight))
+                loginButton.bottomAnchor.constraint(equalTo: loginScreen.bottomAnchor, constant: -(UIScreen.main.bounds.height - 506 - topbarHeight - tabbarHeight)),
+                
+                passwordLabel.topAnchor.constraint(equalTo: loginPasswordStackView.bottomAnchor),
+                passwordLabel.centerXAnchor.constraint(equalTo: loginPasswordStackView.centerXAnchor)
             ])
     }
     

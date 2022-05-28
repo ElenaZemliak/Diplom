@@ -117,7 +117,26 @@ class ProfileHeaderView: UIView {
     }
     
     @objc private func buttonPressed() {
-        if statusText != ""{
+        if statusText == ""{
+            UIView.animate(withDuration: 1,
+                           delay: 0,
+                           options: .curveEaseOut)
+            {
+                self.statusTextField.layer.borderColor = UIColor.red.cgColor
+                self.statusTextField.layer.borderWidth = 3
+             }
+            completion: { _ in
+                UIView.animate(withDuration: 0.1,
+                           delay: 0,
+                           options: .curveEaseInOut)
+                    {
+                        self.statusTextField.layer.borderColor = UIColor.black.cgColor
+                        self.statusTextField.layer.borderWidth = 1
+                    }
+            }
+            return
+        
+        }else{
             statusLabel.text = statusText
             statusText = ""
             statusTextField.text = ""
@@ -174,7 +193,7 @@ class ProfileHeaderView: UIView {
                        delay: 0,
                        options: .curveEaseInOut)
         {
-//
+
             self.avatarView.alpha = 0.75
             self.avatarImage.layer.cornerRadius = 0
             self.avatarImage.layer.borderWidth = 0
